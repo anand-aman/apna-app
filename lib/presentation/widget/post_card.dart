@@ -1,3 +1,4 @@
+import 'package:apna_app/presentation/screens/post_detail_screen.dart';
 import 'package:flutter/material.dart';
 
 class PostCard extends StatelessWidget {
@@ -37,7 +38,9 @@ class PostCard extends StatelessWidget {
             ],
           ),
         ),
-        onTap: (){},
+        onTap: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => PostDetailScreen()));
+        },
       ),
     );
   }
