@@ -24,11 +24,12 @@ class HomeScreen extends StatelessWidget {
                         title: _homeCubit.postList[index]['title'],
                         author: _homeCubit.postList[index]['author'],
                         date: _homeCubit.postList[index]['created_at'],
+                        objectId: _homeCubit.postList[index]['objectID'],
                       );
                     });
               }
               else if (state is HomeError){
-                Center(child: Text("Error Occured"),);
+                Center(child: Text("Error Occurred"),);
               }
               return Center(
                 child: CircularProgressIndicator(),
