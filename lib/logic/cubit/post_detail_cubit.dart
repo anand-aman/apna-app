@@ -25,11 +25,11 @@ class PostDetailCubit extends Cubit<PostDetailState> {
     }
 
     var data = jsonDecode(response.body);
-    title = data['title'];
-    author = data['author'];
-    description = data['text'];
-    points = data['points'];
-    comments = data['children'];
+    title = data['title'] ?? "Title";
+    author = data['author'] ?? "Author";
+    description = data['text'] ?? "";
+    points = data['points'] ?? -1;
+    comments = data['children'] ?? [];
     print(comments);
 
     emit(PostDetailLoaded());

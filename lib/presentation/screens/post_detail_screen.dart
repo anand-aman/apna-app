@@ -35,16 +35,18 @@ class PostDetailScreen extends StatelessWidget {
                       fontSize: 25.0,
                     ),
                   ),
+                  SizedBox(height: 10.0),
                   Text(
                     'Points: ${_postDetailCubit.points.toString()}',
                     style: TextStyle(fontSize: 18.0, color: Colors.blueGrey),
                   ),
-                  SizedBox(height: 15),
-                  Text(
-                    '${_postDetailCubit.description}',
-                    style: TextStyle(fontSize: 20.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(
+                      '${_postDetailCubit.description}',
+                      style: TextStyle(fontSize: 20.0),
+                    ),
                   ),
-                  SizedBox(height: 15),
                   Text(
                     'Comments',
                     style: TextStyle(
@@ -56,14 +58,15 @@ class PostDetailScreen extends StatelessWidget {
                   SizedBox(height: 10),
                   Expanded(
                       child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 15.0),
+                        margin: EdgeInsets.symmetric(horizontal: 10.0),
                         child: ListView.builder(
                             itemCount: _postDetailCubit.comments.length <=10 ? _postDetailCubit.comments.length : 10,
                             itemBuilder: (context, index) {
                               var comment = _postDetailCubit.comments[index];
                               return Container(
-                                padding: EdgeInsets.all(8.0),
+                                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                                 child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('${comment['author']}', style: TextStyle(fontWeight: FontWeight.bold)),
                                     Text('${comment['text']}'),
