@@ -11,14 +11,24 @@ class HomeScreen extends StatelessWidget {
     final _homeCubit = BlocProvider.of<HomeCubit>(context);
     _homeCubit.getData();
     return Scaffold(
+      appBar: AppBar(title: Text('Home Screen'),),
       body: SafeArea(
         child: Container(
           child: BlocBuilder<HomeCubit, HomeState>(
             builder: (context, state) {
               if (state is HomeLoaded) {
-                return SingleChildScrollView(
-                  child: PostCard(),
-                );
+                return ListView.builder(
+                    itemCount: _homeCubit.itemCount,
+                    itemBuilder: (context, index) {
+                      return PostCard(
+                        title: _homeCubit.postList[index]['title'],
+                        author: _homeCubit.postList[index]['author'],
+                        date: _homeCubit.postList[index]['created_at'],
+                      );
+                    });
+              }
+              else if (state is HomeError){
+                Center(child: Text("Error Occured"),);
               }
               return Center(
                 child: CircularProgressIndicator(),

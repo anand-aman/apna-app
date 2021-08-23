@@ -14,3 +14,7 @@ class HomeLoading extends HomeState {
 class HomeLoaded extends HomeState {
   HomeLoaded();
 }
+
+class HomeError extends HomeState {
+  HomeError();
+}

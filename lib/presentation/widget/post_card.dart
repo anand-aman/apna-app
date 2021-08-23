@@ -1,37 +1,43 @@
 import 'package:flutter/material.dart';
 
 class PostCard extends StatelessWidget {
-  const PostCard({Key? key}) : super(key: key);
+  const PostCard({Key? key, required this.title, required this.author, required this.date}) : super(key: key);
+  final String title;
+  final String author;
+  final String date;
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 5.0,
-      margin: EdgeInsets.all(5.0),
-      child: Container(
-        height: 100.0,
-        width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.all(5.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Title is very long and it might not fit in the card',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0,
+      elevation: 4.0,
+      margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+      child: GestureDetector(
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '$title',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20.0,
+                ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Date Time'),
-                Text('Author'),
-              ],
-            ),
-          ],
+              SizedBox(height: 8.0,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('$author'),
+                  Text('${date.substring(0,10)}'),
+                ],
+              ),
+            ],
+          ),
         ),
+        onTap: (){},
       ),
     );
   }
